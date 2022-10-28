@@ -1,0 +1,9 @@
+{
+  "name": "api-lanceiros-mg",
+  "version": "1.0.0",
+  "description": "API do Lanceiros Moto Grupo",
+  "main": "index.js",
+  "repository": "https://github.com/rodrigordgfs/api-lanceiros-mg",
+  "author": "Rodrigo Viegas Rodrigues",
+  "license": "MIT"
+}

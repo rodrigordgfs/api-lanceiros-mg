@@ -1,11 +1,13 @@
 import { Router } from "express";
-import { PostSedeController } from "../controller/sede/PostSedeController";
+import { SedeController } from "../controller/sede/SedeController";
 
 const sedeRoutes = Router();
 
-const postSedeController = new PostSedeController();
+const sedeController = new SedeController();
 
-sedeRoutes.post("/", postSedeController.handle);
+sedeRoutes.post("/", sedeController.create);
+sedeRoutes.get("/", sedeController.get);
+sedeRoutes.get("/:id", sedeController.getById);
 
 export { sedeRoutes };
 

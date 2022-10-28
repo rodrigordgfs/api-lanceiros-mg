@@ -6,6 +6,9 @@
   "repository": "https://github.com/rodrigordgfs/api-lanceiros-mg",
   "author": "Rodrigo Viegas Rodrigues",
   "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/server.ts"
+  },
   "devDependencies": {
     "@types/express": "^4.17.14",
     "@types/http-status-codes": "^1.2.0",

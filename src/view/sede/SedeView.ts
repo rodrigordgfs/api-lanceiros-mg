@@ -1,8 +1,8 @@
 import { Sede } from "@prisma/client";
 import { StatusCodes } from "http-status-codes";
 import { AppError } from "../../errors/AppError";
-import { ISede } from "../../interface/ISede";
-import { ISedeID } from "../../interface/ISedeID";
+import { ISede } from "../../interface/sede/ISede";
+import { ISedeID } from "../../interface/sede/ISedeID";
 import { prisma } from "../../prisma/client";
 
 export class SedeView {

@@ -9,6 +9,7 @@ sedeRoutes.post("/", sedeController.create);
 sedeRoutes.get("/", sedeController.get);
 sedeRoutes.get("/:id", sedeController.getById);
 sedeRoutes.patch("/:id", sedeController.patch);
+sedeRoutes.delete("/:id", sedeController.delete);
 
 export { sedeRoutes };
 

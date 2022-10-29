@@ -8,7 +8,7 @@ export class SedeController {
 
     const sedeView = new SedeView();
 
-    const result = await sedeView.create({
+    const result = await sedeView.post({
       nome,
       regiao,
       endereco,
@@ -54,5 +54,15 @@ export class SedeController {
     });
 
     return response.status(StatusCodes.OK).json(result);
+  }
+
+  async delete(request: Request, response: Response) {
+    const { id } = request.params;
+
+    const sedeView = new SedeView();
+
+    await sedeView.delete({ id });
+
+    return response.status(StatusCodes.OK).send();
   }
 }

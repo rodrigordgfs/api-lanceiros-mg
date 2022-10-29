@@ -38,4 +38,21 @@ export class SedeController {
 
     return response.status(StatusCodes.OK).json(result);
   }
+
+  async patch(request: Request, response: Response) {
+    const { id } = request.params;
+    const { nome, regiao, endereco, ativo } = request.body;
+
+    const sedeView = new SedeView();
+
+    const result = await sedeView.patch({
+      id,
+      nome,
+      regiao,
+      endereco,
+      ativo,
+    });
+
+    return response.status(StatusCodes.OK).json(result);
+  }
 }

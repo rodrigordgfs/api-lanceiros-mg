@@ -36,7 +36,7 @@ export class SedeView {
         },
         regiao: {
           contains: regiao,
-        },
+        }
       },
     });
     return sedes;
@@ -49,5 +49,30 @@ export class SedeView {
       },
     });
     return sede as Sede;
+  }
+
+  async patch({ id, nome, regiao, endereco, ativo }: ISede): Promise<Sede> {
+    const sedeExists = await prisma.sede.findFirst({
+      where: {
+        id,
+      },
+    });
+
+    if (!sedeExists) {
+      throw new AppError("Sede não encontrada!");
+    }
+
+    const sede = await prisma.sede.update({
+      where: {
+        id,
+      },
+      data: {
+        nome,
+        regiao,
+        endereco,
+        ativo,
+      },
+    });
+    return sede;
   }
 }

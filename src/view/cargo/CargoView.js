@@ -3,7 +3,7 @@ import { prisma } from "../../prisma/client.js";
 
 export class CargoView {
   async post({ nome }) {
-    const cargoAlreadyExists = await prisma.cargo.findFirst({
+    const cargoAlreadyExists = await prisma.cargos.findFirst({
       where: {
         nome,
       },
@@ -20,7 +20,7 @@ export class CargoView {
   }
 
   async get({ nome }) {
-    const cargo = await prisma.cargo.findMany({
+    const cargo = await prisma.cargos.findMany({
       where: {
         nome: {
           contains: nome,
@@ -34,7 +34,7 @@ export class CargoView {
   }
 
   async getById({ id }) {
-    const cargo = await prisma.cargo.findFirst({
+    const cargo = await prisma.cargos.findFirst({
       where: {
         id,
       },
@@ -43,7 +43,7 @@ export class CargoView {
   }
 
   async patch({ id, nome, ativo }) {
-    const cargoExists = await prisma.cargo.findFirst({
+    const cargoExists = await prisma.cargos.findFirst({
       where: {
         id,
       },
@@ -51,7 +51,7 @@ export class CargoView {
     if (!cargoExists) {
       throw new AppError("Cargo não encontrado!", StatusCodes.NOT_FOUND);
     }
-    const cargo = await prisma.cargo.update({
+    const cargo = await prisma.cargos.update({
       where: {
         id,
       },
@@ -64,7 +64,7 @@ export class CargoView {
   }
 
   async delete({ id }) {
-    const cargoExists = await prisma.cargo.findFirst({
+    const cargoExists = await prisma.cargos.findFirst({
       where: {
         id,
       },
@@ -72,7 +72,7 @@ export class CargoView {
     if (!cargoExists) {
       throw new AppError("Cargo não encontrado!", StatusCodes.NOT_FOUND);
     }
-    const cargo = await prisma.cargo.delete({
+    const cargo = await prisma.cargos.delete({
       where: {
         id,
       },

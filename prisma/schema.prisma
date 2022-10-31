@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Sede {
+model Sedes {
   id        String   @id @default(uuid())
   nome      String
   regiao    String
@@ -16,15 +16,26 @@ model Sede {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@map("sede")
+  @@map("sedes")
 }
 
-model Cargo {
+model Cargos {
   id        String   @id @default(uuid())
   nome      String
   ativo     Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@map("cargo")
+  @@map("cargos")
+}
+
+model Graduacoes {
+  id        String   @id @default(uuid())
+  nome      String
+  observacao String?
+  ativo     Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("graduacoes")
 }

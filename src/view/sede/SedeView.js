@@ -4,7 +4,7 @@ import { prisma } from "../../prisma/client.js";
 
 export class SedeView {
   async post({ nome, regiao, endereco, ativo }) {
-    const sedeAlreadyExists = await prisma.sede.findFirst({
+    const sedeAlreadyExists = await prisma.sedes.findFirst({
       where: {
         nome,
       },
@@ -14,7 +14,7 @@ export class SedeView {
       throw new AppError("Sede já existe!");
     }
 
-    const sede = await prisma.sede.create({
+    const sede = await prisma.sedes.create({
       data: {
         nome,
         regiao,
@@ -27,7 +27,7 @@ export class SedeView {
   }
 
   async get({ nome, regiao }) {
-    const sedes = await prisma.sede.findMany({
+    const sedes = await prisma.sedes.findMany({
       where: {
         nome: {
           contains: nome,
@@ -44,7 +44,7 @@ export class SedeView {
   }
 
   async getById({ id }) {
-    const sede = await prisma.sede.findFirst({
+    const sede = await prisma.sedes.findFirst({
       where: {
         id,
       },
@@ -53,7 +53,7 @@ export class SedeView {
   }
 
   async patch({ id, nome, regiao, endereco, ativo }) {
-    const sedeExists = await prisma.sede.findFirst({
+    const sedeExists = await prisma.sedes.findFirst({
       where: {
         id,
       },
@@ -63,7 +63,7 @@ export class SedeView {
       throw new AppError("Sede não encontrada!", StatusCodes.NOT_FOUND);
     }
 
-    const sede = await prisma.sede.update({
+    const sede = await prisma.sedes.update({
       where: {
         id,
       },
@@ -78,7 +78,7 @@ export class SedeView {
   }
 
   async delete({ id }) {
-    const sedeExists = await prisma.sede.findFirst({
+    const sedeExists = await prisma.sedes.findFirst({
       where: {
         id,
       },
@@ -88,7 +88,7 @@ export class SedeView {
       throw new AppError("Sede não encontrada!", StatusCodes.NOT_FOUND);
     }
 
-    await prisma.sede.delete({
+    await prisma.sedes.delete({
       where: {
         id,
       },

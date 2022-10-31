@@ -5,7 +5,7 @@ import validateBody from "../../validators/validate.js";
 import { SedeView } from "../../view/sede/SedeView.js";
 
 export class SedeController {
-  async create(request, response) {
+  async post(request, response) {
     const { nome, regiao, endereco, ativo } = request.body;
 
     validateBody(postSchema, { nome, regiao, endereco, ativo });

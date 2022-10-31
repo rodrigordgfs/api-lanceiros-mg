@@ -23,8 +23,7 @@ export class SedeController {
   }
 
   async get(request, response) {
-    const nome = request.query.nome;
-    const regiao = request.query.regiao;
+    const { nome, regiao } = request.query;
 
     const sedeView = new SedeView();
 

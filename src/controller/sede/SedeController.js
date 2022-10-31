@@ -1,4 +1,5 @@
 import { StatusCodes } from "http-status-codes";
+import patchSchema from "../../validators/sede/patch.js";
 import postSchema from "../../validators/sede/post.js";
 import validateBody from "../../validators/validate.js";
 import { SedeView } from "../../view/sede/SedeView.js";
@@ -45,6 +46,8 @@ export class SedeController {
   async patch(request, response) {
     const { id } = request.params;
     const { nome, regiao, endereco, ativo } = request.body;
+
+    validateBody(patchSchema, { nome, regiao, endereco, ativo });
 
     const sedeView = new SedeView();
 

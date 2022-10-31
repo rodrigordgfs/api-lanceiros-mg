@@ -1,11 +1,12 @@
-import { AppError } from "../../errors/AppError.js";
-import { prisma } from "../../prisma/client.js";
+import { AppError } from "../errors/AppError.js";
+import { prisma } from "../prisma/client.js";
 
 export class CargoView {
-  async post({ nome }) {
+  async post({ nome, ativo }) {
     const cargoAlreadyExists = await prisma.cargos.findFirst({
       where: {
         nome,
+        ativo
       },
     });
     if (cargoAlreadyExists) {

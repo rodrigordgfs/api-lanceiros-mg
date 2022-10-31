@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
-import { AppError } from "../../errors/AppError.js";
-import { prisma } from "../../prisma/client.js";
+import { AppError } from "../errors/AppError.js";
+import { prisma } from "../prisma/client.js";
 
 export class SedeView {
   async post({ nome, regiao, endereco, ativo }) {

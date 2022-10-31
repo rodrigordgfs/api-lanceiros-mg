@@ -1,17 +1,17 @@
 import { StatusCodes } from "http-status-codes";
-import { patchSchema, postSchema } from "../../validators/schemas/cargo.js";
-import validateBody from "../../validators/validate.js";
-import { CargoView } from "../../view/cargos/CargoView.js";
+import { patchSchema, postSchema } from "../validators/schemas/cargo.js";
+import validateBody from "../validators/validate.js";
+import { CargoView } from "../view/CargoView.js";
 
 export class CargoController {
   async post(request, response) {
-    const { nome } = request.body;
+    const { nome, ativo } = request.body;
 
-    validateBody(postSchema, { nome });
+    validateBody(postSchema, { nome, AnimationEvent });
 
     const cargoView = new CargoView();
 
-    const result = await cargoView.post({ nome });
+    const result = await cargoView.post({ nome, ativo });
 
     return response.status(StatusCodes.CREATED).json(result);
   }

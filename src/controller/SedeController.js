@@ -1,7 +1,7 @@
 import { StatusCodes } from "http-status-codes";
-import { patchSchema, postSchema } from "../../validators/schemas/sede.js";
-import validateBody from "../../validators/validate.js";
 import { SedeView } from "../../view/sede/SedeView.js";
+import { patchSchema, postSchema } from "../validators/schemas/sede.js";
+import validateBody from "../validators/validate.js";
 
 export class SedeController {
   async post(request, response) {

@@ -8,34 +8,56 @@ datasource db {
 }
 
 model Sedes {
-  id        String   @id @default(uuid())
-  nome      String
+  id        String    @id @default(uuid())
+  nome      String    @unique
   regiao    String
   endereco  String?
-  ativo     Boolean  @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  ativo     Boolean   @default(true)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  membros   Membros[] @relation("sede")
 
   @@map("sedes")
 }
 
 model Cargos {
-  id        String   @id @default(uuid())
-  nome      String
-  ativo     Boolean  @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id        String    @id @default(uuid())
+  nome      String    @unique
+  ativo     Boolean   @default(true)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  membros   Membros[] @relation("cargo")
 
   @@map("cargos")
 }
 
-model Graduacoes {
-  id        String   @id @default(uuid())
-  nome      String
-  observacao String?
-  ativo     Boolean  @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model Membros {
+  id                  String    @id @default(uuid())
+  sedeId              String
+  cargoId             String
+  cpf                 String    @unique
+  nome                String
+  apelido             String?
+  telefone_contato    String
+  telefone_emergencia String
+  data_nascimento     DateTime
+  cep                 String
+  estado              String
+  cidade              String
+  logradouro          String
+  numero              String
+  bairro              String
+  complemento         String?
+  profissao           String
+  estado_civil        String
+  data_entrada        DateTime
+  data_saida          DateTime?
+  observacoes         String?
+  ativo               Boolean   @default(true)
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+  sede                Sedes     @relation("sede", fields: [sedeId], references: [id])
+  cargo               Cargos    @relation("cargo", fields: [cargoId], references: [id])
 
-  @@map("graduacoes")
+  @@map("membros")
 }

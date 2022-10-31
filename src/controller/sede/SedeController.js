@@ -1,9 +1,13 @@
 import { StatusCodes } from "http-status-codes";
+import postSchema from "../../validators/sede/post.js";
+import validateBody from "../../validators/validate.js";
 import { SedeView } from "../../view/sede/SedeView.js";
 
 export class SedeController {
   async create(request, response) {
     const { nome, regiao, endereco, ativo } = request.body;
+
+    validateBody(postSchema, { nome, regiao, endereco, ativo });
 
     const sedeView = new SedeView();
 

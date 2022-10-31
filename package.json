@@ -8,7 +8,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "nodemon --watch --inspect server src/server.js"
+    "dev": "nodemon --watch server src/server.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.20",

@@ -36,6 +36,9 @@ export class SedeView {
           contains: regiao,
         },
       },
+      orderBy: {
+        nome: "asc",
+      }
     });
     return sedes;
   }

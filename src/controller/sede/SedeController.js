@@ -1,6 +1,5 @@
 import { StatusCodes } from "http-status-codes";
-import patchSchema from "../../validators/sede/patch.js";
-import postSchema from "../../validators/sede/post.js";
+import { patchSchema, postSchema } from "../../validators/schemas/sede.js";
 import validateBody from "../../validators/validate.js";
 import { SedeView } from "../../view/sede/SedeView.js";
 

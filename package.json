@@ -2,24 +2,23 @@
   "name": "api-lanceiros-mg",
   "version": "1.0.0",
   "description": "API do Lanceiros Moto Grupo",
-  "main": "index.js",
+  "main": "src/server.js",
   "repository": "https://github.com/rodrigordgfs/api-lanceiros-mg",
   "author": "Rodrigo Viegas Rodrigues",
   "license": "MIT",
+  "type": "module",
   "scripts": {
-    "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/server.ts"
+    "dev": "nodemon --watch --inspect server src/server.js"
   },
   "devDependencies": {
-    "@types/express": "^4.17.14",
-    "@types/http-status-codes": "^1.2.0",
-    "prisma": "^4.5.0",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^4.8.4"
+    "nodemon": "^2.0.20",
+    "prisma": "^4.5.0"
   },
   "dependencies": {
     "@prisma/client": "^4.5.0",
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
+    "http-errors": "^2.0.0",
     "http-status-codes": "^2.2.0"
   }
 }

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { SedeController } from "../controller/sede/SedeController";
+import { SedeController } from "../controller/sede/SedeController.js";
 
 const sedeRoutes = Router();
 

@@ -1,12 +1,9 @@
-import { Sede } from "@prisma/client";
 import { StatusCodes } from "http-status-codes";
-import { AppError } from "../../errors/AppError";
-import { ISede } from "../../interface/sede/ISede";
-import { ISedeID } from "../../interface/sede/ISedeID";
-import { prisma } from "../../prisma/client";
+import { AppError } from "../../errors/AppError.js";
+import { prisma } from "../../prisma/client.js";
 
 export class SedeView {
-  async post({ nome, regiao, endereco, ativo }: ISede): Promise<Sede> {
+  async post({ nome, regiao, endereco, ativo }) {
     const sedeAlreadyExists = await prisma.sede.findFirst({
       where: {
         nome,
@@ -29,7 +26,7 @@ export class SedeView {
     return sede;
   }
 
-  async get({ nome, regiao }: ISede): Promise<Sede[]> {
+  async get({ nome, regiao }) {
     const sedes = await prisma.sede.findMany({
       where: {
         nome: {
@@ -43,16 +40,16 @@ export class SedeView {
     return sedes;
   }
 
-  async getById({ id }: ISedeID): Promise<Sede> {
+  async getById({ id }) {
     const sede = await prisma.sede.findFirst({
       where: {
         id,
       },
     });
-    return sede as Sede;
+    return sede || {};
   }
 
-  async patch({ id, nome, regiao, endereco, ativo }: ISede): Promise<Sede> {
+  async patch({ id, nome, regiao, endereco, ativo }) {
     const sedeExists = await prisma.sede.findFirst({
       where: {
         id,
@@ -77,7 +74,7 @@ export class SedeView {
     return sede;
   }
 
-  async delete({ id }: ISedeID): Promise<void> {
+  async delete({ id }) {
     const sedeExists = await prisma.sede.findFirst({
       where: {
         id,

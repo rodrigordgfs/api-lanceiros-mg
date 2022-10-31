@@ -1,9 +1,8 @@
-import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
-import { SedeView } from "../../view/sede/SedeView";
+import { SedeView } from "../../view/sede/SedeView.js";
 
 export class SedeController {
-  async create(request: Request, response: Response) {
+  async create(request, response) {
     const { nome, regiao, endereco, ativo } = request.body;
 
     const sedeView = new SedeView();
@@ -18,9 +17,9 @@ export class SedeController {
     return response.status(StatusCodes.CREATED).json(result);
   }
 
-  async get(request: Request, response: Response) {
-    const nome = request.query.nome as string;
-    const regiao = request.query.regiao as string;
+  async get(request, response) {
+    const nome = request.query.nome;
+    const regiao = request.query.regiao;
 
     const sedeView = new SedeView();
 
@@ -29,7 +28,7 @@ export class SedeController {
     return response.status(StatusCodes.OK).json(result);
   }
 
-  async getById(request: Request, response: Response) {
+  async getById(request, response) {
     const { id } = request.params;
 
     const sedeView = new SedeView();
@@ -39,7 +38,7 @@ export class SedeController {
     return response.status(StatusCodes.OK).json(result);
   }
 
-  async patch(request: Request, response: Response) {
+  async patch(request, response) {
     const { id } = request.params;
     const { nome, regiao, endereco, ativo } = request.body;
 
@@ -56,7 +55,7 @@ export class SedeController {
     return response.status(StatusCodes.OK).json(result);
   }
 
-  async delete(request: Request, response: Response) {
+  async delete(request, response) {
     const { id } = request.params;
 
     const sedeView = new SedeView();

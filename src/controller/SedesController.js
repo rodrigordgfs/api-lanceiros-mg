@@ -31,6 +31,16 @@ export class SedeController {
     return response.status(StatusCodes.OK).json(result);
   }
 
+  async getMembrosBySede(request, response) {
+    const { id } = request.params;
+
+    const sedeView = new SedeView();
+
+    const result = await sedeView.getMembrosBySede({ id });
+
+    return response.status(StatusCodes.OK).json(result);
+  }
+
   async getById(request, response) {
     const { id } = request.params;
 

@@ -38,7 +38,42 @@ export class SedeView {
       },
       orderBy: {
         nome: "asc",
-      }
+      },
+    });
+    return sedes;
+  }
+
+  async getMembrosBySede({ id }) {
+    const existeSede = await prisma.sedes.findFirst({
+      where: {
+        id,
+      },
+    });
+    if (!existeSede) {
+      throw new AppError("Sede não encontrada!", StatusCodes.NOT_FOUND);
+    }
+
+    const sedes = await prisma.sedes.findMany({
+      where: {
+        id,
+      },
+      include: {
+        membros: {
+          select: {
+            id: true,
+            nome: true,
+            cargo: {
+              select: {
+                id: true,
+                nome: true,
+              },
+            },
+          },
+        },
+      },
+      orderBy: {
+        nome: "asc",
+      },
     });
     return sedes;
   }

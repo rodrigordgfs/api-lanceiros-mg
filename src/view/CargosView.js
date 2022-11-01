@@ -12,7 +12,7 @@ export class CargoView {
     if (cargoAlreadyExists) {
       throw new AppError("Cargo já existe!");
     }
-    const cargo = await prisma.cargo.create({
+    const cargo = await prisma.cargos.create({
       data: {
         nome,
       },

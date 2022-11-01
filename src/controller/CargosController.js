@@ -1,13 +1,13 @@
 import { StatusCodes } from "http-status-codes";
 import { patchSchema, postSchema } from "../validators/schemas/cargo.js";
 import validateBody from "../validators/validate.js";
-import { CargoView } from "../view/CargoView.js";
+import { CargoView } from "../view/CargosView.js";
 
 export class CargoController {
   async post(request, response) {
     const { nome, ativo } = request.body;
 
-    validateBody(postSchema, { nome, AnimationEvent });
+    validateBody(postSchema, { nome, ativo });
 
     const cargoView = new CargoView();
 

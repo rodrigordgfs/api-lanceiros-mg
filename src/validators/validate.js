@@ -5,7 +5,7 @@ export default function validateBody(schema, data) {
   const validate = schema.validate(data);
   if (validate.error) {
     throw new AppError(
-      validate.error.details[0].message,
+      String(validate.error.details[0].message).replace(/"/g, ""),
       StatusCodes.BAD_REQUEST
     );
   }

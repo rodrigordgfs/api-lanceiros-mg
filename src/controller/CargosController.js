@@ -26,6 +26,16 @@ export class CargoController {
     return response.status(StatusCodes.OK).json(result);
   }
 
+  async getMembrosByCargo(request, response) {
+    const { id } = request.params;
+
+    const cargoView = new CargoView();
+
+    const result = await cargoView.getMembrosByCargo({ id });
+
+    return response.status(StatusCodes.OK).json(result);
+  }
+
   async getById(request, response) {
     const { id } = request.params;
 

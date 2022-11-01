@@ -6,7 +6,7 @@ export class CargoView {
     const cargoAlreadyExists = await prisma.cargos.findFirst({
       where: {
         nome,
-        ativo
+        ativo,
       },
     });
     if (cargoAlreadyExists) {
@@ -29,7 +29,39 @@ export class CargoView {
       },
       orderBy: {
         nome: "asc",
-      }
+      },
+    });
+    return cargo;
+  }
+
+  async getMembrosByCargo({ id }) {
+    const cargoExists = await prisma.cargos.findFirst({
+      where: {
+        id,
+      },
+    });
+    if (!cargoExists) {
+      throw new AppError("Cargo não encontrado!", StatusCodes.NOT_FOUND);
+    }
+
+    const cargo = await prisma.cargos.findMany({
+      where: {
+        id,
+      },
+      include: {
+        membros: {
+          select: {
+            id: true,
+            nome: true,
+            sede: {
+              select: {
+                id: true,
+                nome: true,
+              },
+            },
+          },
+        },
+      },
     });
     return cargo;
   }
